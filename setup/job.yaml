@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: installation-job
+spec:
+  completions: 1
+  parallelism: 1
+  template:
+    spec:
+      volumes:
+        - name: installation-configmap
+          configMap:
+            name: installation-configmap
+            optional: false
+      restartPolicy: Never
+      serviceAccountName: installation-sa
+      containers:
+        - name: installation-pod
+          image: ubuntu
+          imagePullPolicy: IfNotPresent
+          args: ["bash","/tmp/jobs/install.sh"]
+          volumeMounts:
+          - name: installation-configmap
+            mountPath: /tmp/jobs
+            readOnly: true

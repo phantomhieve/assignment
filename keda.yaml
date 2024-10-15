@@ -1,0 +1,19 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: prometheus-scaledobject
+  namespace: <NAMESPACE>
+spec:
+  scaleTargetRef:
+    kind: Deployment
+    name: <DEPLOYMENT_NAME>
+  minReplicaCount: 0
+  maxReplicaCount: 10
+  pollingInterval: 15
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus-kube-prometheus-prometheus.prometheus.svc.cluster.local:9090
+        metricName: nginx_ingress_controller_requests
+        threshold: '10'
+        query: sum(rate(nginx_ingress_controller_requests{namespace="<NAMESPACE>"}[1m]))
