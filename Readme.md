@@ -21,7 +21,7 @@ E --> D
 	- `DEPLOYMENT_NAMESPACE` - Namespace for deployment of the services.
 	- `DEPLOYMENT_NAME` - Name of the deployment.
 
-> **FILE**  deployment.sh
+> **FILE** deployment.sh (Starting Point)
 
 ## Dependencies installation
 The script install three tools within the cluster
