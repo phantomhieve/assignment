@@ -4,7 +4,7 @@
 export KUBECONFIG="kubeconfig"
 
 INSTALLATION_NAMESPACE="atul-testing"
-DOMAIN="atul-testing.mavq.in"
+DOMAIN="example.com"
 EMAIL="khetanatulz@gmail.com"
 DEPLOYMENT_NAMESPACE="atul-testing"
 DEPLOYMENT_NAME="atul"
